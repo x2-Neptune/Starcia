@@ -1,12 +1,67 @@
 __StarciaConnect = {}
 __StarciaGet = {}
 __StarciaGet.InjectCheck = false
+__StarciaGet.UIEnable = true
 function __StarciaGet:Notify(Text_i)
     game.StarterGui:SetCore("SendNotification", {
         Title = "Starcia",
         Text = Text_i,
         Duration = 5
     })
+end
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+function __StarciaGet:Drag(Frame, object)
+    dragToggle = nil
+    dragSpeed = .25
+    dragInput = nil
+    dragStart = nil
+    dragPos = nil
+    function updateInput(input)
+        Delta = input.Position - dragStart
+        Position =
+            UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+        game:GetService("TweenService"):Create(object, TweenInfo.new(dragSpeed), {Position = Position}):Play()
+    end
+    Frame.InputBegan:Connect(
+        function(input)
+            if
+                (input.UserInputType == Enum.UserInputType.MouseButton1 or
+                    input.UserInputType == Enum.UserInputType.Touch)
+            then
+                dragToggle = true
+                dragStart = input.Position
+                startPos = object.Position
+                input.Changed:Connect(
+                    function()
+                        if (input.UserInputState == Enum.UserInputState.End) then
+                            dragToggle = false
+                        end
+                    end
+                )
+            end
+        end
+    )
+    Frame.InputChanged:Connect(
+        function(input)
+            if
+                (input.UserInputType == Enum.UserInputType.MouseMovement or
+                    input.UserInputType == Enum.UserInputType.Touch)
+            then
+                dragInput = input
+            end
+        end
+    )
+    game:GetService("UserInputService").InputChanged:Connect(
+    function(input)
+        if (input == dragInput and dragToggle) then
+            updateInput(input)
+        end
+    end
+    )
 end
 function __StarciaConnect:GUI(CanvasSizeA,CanvasSizeB)
     local __Starcia = Instance.new("ScreenGui")
@@ -22,7 +77,7 @@ function __StarciaConnect:GUI(CanvasSizeA,CanvasSizeB)
     local UICorner_2 = Instance.new("UICorner")
     local __Starcia_8 = Instance.new("UIGradient")
     __Starcia.Name = "__Starcia"
-    __Starcia.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    __Starcia.Parent = game.CoreGui
     __Starcia.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     __Starcia_2.Name = "__Starcia"
     __Starcia_2.Parent = __Starcia
@@ -133,5 +188,21 @@ function __StarciaConnect:GUI(CanvasSizeA,CanvasSizeB)
             __StarciaGet:Notify("Inject before runnin script")
         end
     end)
+    game:GetService('UserInputService').InputBegan:Connect(function(input)
+		if input.KeyCode == Enum.KeyCode.LeftControl then
+			if __StarciaGet.UIEnable then
+                __StarciaGet.UIEnable = false
+                __Starcia_2.Visible = false
+            else
+                __StarciaGet.UIEnable = true
+                __Starcia_2.Visible = true
+            end
+		end
+	end)
+    __StarciaGet:Drag(__Starcia_2, __Starcia_2)
 end
 return __StarciaConnect
+-------------------------------------
+--[[
+__StarciaConnect:GUI(2.5,30)
+]]
