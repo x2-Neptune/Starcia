@@ -19,7 +19,6 @@ function __StarciaGet:RandomString(length)
     end  
     return result
 end
-RandomString(12)
 function __StarciaGet:Drag(Frame, object)
     dragToggle = nil
     dragSpeed = .25
@@ -184,10 +183,12 @@ function __StarciaConnect:Load(CanvasSizeA,CanvasSizeB)
     __StarciaGUI[8].Name = tostring(__StarciaGet:RandomString(16))
     __StarciaGUI[8].Parent = __StarciaGUI[2]
     __StarciaGUI["__Inject"].MouseButton1Click:Connect(function()
-        __StarciaGUI["__Inject"].Text = "[ Auth... ]"
-        wait(0.5)
-        __StarciaGUI["__Inject"].Text = "[ Connected ]"
-        __StarciaGet.InjectCheck = true
+        if not __StarciaGet.InjectCheck then
+            __StarciaGUI["__Inject"].Text = "[ Auth... ]"
+            wait(0.5)
+            __StarciaGUI["__Inject"].Text = "[ Connected ]"
+            __StarciaGet.InjectCheck = true
+        end
     end)
     __StarciaGUI["__Execute"].MouseButton1Click:Connect(function()
         if __StarciaGet.InjectCheck then
