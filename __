@@ -128,7 +128,7 @@ __StarciaGUI["__Inject"].BorderSizePixel = 0
 __StarciaGUI["__Inject"].Position = UDim2.new(0.332187891, 0, 0.910609841, 0)
 __StarciaGUI["__Inject"].Size = UDim2.new(0.300000012, 0, 0.0916457772, 0)
 __StarciaGUI["__Inject"].Font = Enum.Font.Gotham
-__StarciaGUI["__Inject"].Text = "[ Discord ]"
+__StarciaGUI["__Inject"].Text = "[ Clear ]"
 __StarciaGUI["__Inject"].TextColor3 = Color3.fromRGB(255, 255, 255)
 __StarciaGUI["__Inject"].TextSize = 16.000
 __StarciaGUI["__Inject"].TextWrapped = true
@@ -174,12 +174,7 @@ __StarciaGUI[8].Rotation = 250
 __StarciaGUI[8].Name = tostring(__StarciaGet:RandomString(16))
 __StarciaGUI[8].Parent = __StarciaGUI[2]
 __StarciaGUI["__Inject"].MouseButton1Click:Connect(function()
-    if not __StarciaGet.InjectCheck then
-        __StarciaGUI["__Inject"].Text = "[ Copy Success ]"
-        wait(0.5)
-        __StarciaGUI["__Inject"].Text = "[ Discord ]"
-        setclipboard("https://discord.gg/alchemyhub")
-    end
+    __StarciaGUI[7].Text = ""
 end)
 __StarciaGUI["__Execute"].MouseButton1Click:Connect(function()
     if tostring(__StarciaGUI[7].Text) == "__Starcia:DarkDex" then
