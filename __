@@ -259,9 +259,6 @@ function getgenv().__Starcia:ESP(value)
     __StarciaGet["ESP Player"] = value
     __StarciaGet:ESP()
 end
-function getgenv().__Starcia:ESP(value)
-    __StarciaGet["Anti AFK"] = value
-end
 function getgenv().__Starcia:Rejoin()
     game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
 end
