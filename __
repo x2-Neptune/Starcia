@@ -232,37 +232,37 @@ game:GetService('UserInputService').InputBegan:Connect(function(input)
     end
 end)
 __StarciaGet:Drag(__StarciaGUI[2], __StarciaGUI[2])
-getgenv().__Starcia = {}
-function getgenv().__Starcia:Dex()
+getgenv()["__Starcia"] = {}
+getgenv()["__Starcia"].Dex = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
 end
-function getgenv().__Starcia:IY()
+getgenv()["__Starcia"].IY = function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end
-function getgenv().__Starcia:RemoteSpy()
+getgenv()["__Starcia"].RemoteSpy = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
 end
-function getgenv().__Starcia:Hydox()
+getgenv()["__Starcia"].Hydox = function()
     local function webImport(file)
         return loadstring(game:HttpGetAsync(("https://raw.githubusercontent.com/%s/Hydroxide/%s/%s.lua"):format("Upbolt", "revision", file)), file .. '.lua')()
     end
     webImport("init")
     webImport("ui/main")
 end
-function getgenv().__Starcia:GetCFrame()
+getgenv()["__Starcia"].GetCFrame = function()
     return tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
-function getgenv().__Starcia:GetJobId()
+getgenv()["__Starcia"].GetJobId = function()
     return tostring(game.JobId)
 end
-function getgenv().__Starcia:ESP(value)
+getgenv()["__Starcia"].ESP = function(value)
     __StarciaGet["ESP Player"] = value
     __StarciaGet:ESP()
 end
-function getgenv().__Starcia:Rejoin()
+getgenv()["__Starcia"].Rejoin = function()
     game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
 end
-function getgenv().__Starcia:Hop()
+getgenv()["__Starcia"].Hop = function()
     local PlaceID = game.PlaceId
     local AllIDs = {}
     local foundAnything = ""
