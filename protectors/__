@@ -1,7 +1,7 @@
 __StarciaProtector = {
     game:GetService("RbxAnalyticsService"),
     game:GetService("HttpService"),
-    "Protect By Starcia:Protector"
+    "Protect By Starcia [ Alchemy Hub ]"
 }
 for i,v in pairs({__StarciaProtector[1].GetClientId, __StarciaProtector[1]["GetClientId\00"]}) do
     hookfunction(v, function()
@@ -11,7 +11,7 @@ end
 local oldNamecall
 oldNamecall = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
     if self == __StarciaProtector[1] and getnamecallmethod() == "GetClientId" then
-        return 
+        return __StarciaProtector[3]
     end
     return oldNamecall(self, ...)
 end))
