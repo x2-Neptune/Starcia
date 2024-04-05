@@ -1,13 +1,6 @@
 repeat wait(1) until game:IsLoaded()
-repeat wait(1) until game:IsLoaded()
-__Starcia = ({...})[1]
-if __Starcia["NameProtect"] then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/x2-Neptune/Starcia/main/Modules/NameProtector.lua"))()
-end
-if __Starcia["ClientProtect"] then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/x2-Neptune/Starcia/main/Modules/ClientProtector.lua"))()
-end
 if __Starcia["Tools"] then
+__Starcia = ({...})[1]
 __Alchemy = {}
 ---------------------------------------------------------------------- [ SETTING ]
 __Alchemy["Setting"] = {
@@ -142,7 +135,7 @@ __Alchemy["Window"] = {
 __Alchemy["Tab"] = {
     [1] = __Alchemy["Window"][1]:AddTab({ Title = "Load Tools", Icon = "scroll" }),
     [2] = __Alchemy["Window"][1]:AddTab({ Title = "Copy Data", Icon = "feather" }),
-    [4] = __Alchemy["Window"][1]:AddTab({ Title = "Miscellaneous", Icon = "globe" })
+    [3] = __Alchemy["Window"][1]:AddTab({ Title = "Miscellaneous", Icon = "globe" })
 }
 ---------------------------------------------------------------------- [ OPTIONS FLUENT ]
 __Alchemy["Options"] = __Alchemy["Fluent"][1].Options
@@ -340,4 +333,10 @@ if __Alchemy["Setting"]["UI"]["Add-On"] then
         __Alchemy["Fluent"][2]:LoadAutoloadConfig()
     end)
 end
+end
+if __Starcia["NameProtect"] then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/x2-Neptune/Starcia/main/Modules/NameProtector.lua"))()
+end
+if __Starcia["ClientProtect"] then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/x2-Neptune/Starcia/main/Modules/ClientProtector.lua"))()
 end
