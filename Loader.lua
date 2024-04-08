@@ -177,33 +177,7 @@ __StarciaGUI["__Inject"].MouseButton1Click:Connect(function()
     __StarciaGUI[7].Text = ""
 end)
 __StarciaGUI["__Execute"].MouseButton1Click:Connect(function()
-    if tostring(__StarciaGUI[7].Text) == "__Starcia:DarkDex" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
-    elseif tostring(__StarciaGUI[7].Text) == "__Starcia:InfYield" then
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-    elseif tostring(__StarciaGUI[7].Text) == "__Starcia:RemoteSpy" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
-    elseif tostring(__StarciaGUI[7].Text) == "__Starcia:Hydroxide" then
-        local function webImport(file)
-            return loadstring(game:HttpGetAsync(("https://raw.githubusercontent.com/%s/Hydroxide/%s/%s.lua"):format("Upbolt", "revision", file)), file .. '.lua')()
-        end
-        webImport("init")
-        webImport("ui/main")
-    elseif tostring(__StarciaGUI[7].Text) == "__Starcia:1" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
-    elseif tostring(__StarciaGUI[7].Text) == "__Starcia:2" then
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-    elseif tostring(__StarciaGUI[7].Text) == "__Starcia:3" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
-    elseif tostring(__StarciaGUI[7].Text) == "__Starcia:4" then
-        local function webImport(file)
-            return loadstring(game:HttpGetAsync(("https://raw.githubusercontent.com/%s/Hydroxide/%s/%s.lua"):format("Upbolt", "revision", file)), file .. '.lua')()
-        end
-        webImport("init")
-        webImport("ui/main")
-    else
         loadstring(tostring(__StarciaGUI[7].Text))()
-    end
 end)
 game:GetService('UserInputService').InputBegan:Connect(function(input)
     if input.KeyCode == Enum.KeyCode.End then
