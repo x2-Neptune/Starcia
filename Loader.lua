@@ -177,7 +177,21 @@ __StarciaGUI["__Inject"].MouseButton1Click:Connect(function()
     __StarciaGUI[7].Text = ""
 end)
 __StarciaGUI["__Execute"].MouseButton1Click:Connect(function()
+    if tostring(string.upper(__StarciaGUI[7].Text)) == "DEX" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
+    elseif tostring(string.upper(__StarciaGUI[7].Text)) == "IY" then
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    elseif tostring(string.upper(__StarciaGUI[7].Text)) == "SPY" or tostring(string.upper(__StarciaGUI[7].Text)) == "RSPY" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
+    elseif tostring(string.upper(__StarciaGUI[7].Text)) == "HY" then
+        local function webImport(file)
+            return loadstring(game:HttpGetAsync(("https://raw.githubusercontent.com/%s/Hydroxide/%s/%s.lua"):format("Upbolt", "revision", file)), file .. '.lua')()
+        end
+        webImport("init")
+        webImport("ui/main")
+    else
         loadstring(tostring(__StarciaGUI[7].Text))()
+    end
 end)
 game:GetService('UserInputService').InputBegan:Connect(function(input)
     if input.KeyCode == Enum.KeyCode.End then
